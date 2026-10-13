@@ -3,6 +3,7 @@ import { IconAlertTriangle } from "@tabler/icons-react";
 
 import type { TracearrViolation } from "@homarr/integrations/types";
 import { useCurrentIntlLocale, useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import type { SourcedTracearrItem } from "./source";
 
@@ -36,7 +37,7 @@ export function ViolationsList({
               <Group justify="space-between" wrap="nowrap">
                 <Group gap="xs" wrap="nowrap" style={{ overflow: "hidden" }}>
                   <IconAlertTriangle
-                    size="var(--mantine-font-size-sm)"
+                    style={{ ...iconSizes.sm, flexShrink: 0 }}
                     color={
                       violation.severity === "high"
                         ? "var(--mantine-color-red-6)"

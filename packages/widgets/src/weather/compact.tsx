@@ -3,7 +3,7 @@ import { Group, Popover, Stack, Text, UnstyledButton } from "@mantine/core";
 import { IconArrowDownRight, IconArrowUpRight, IconDroplets, IconMapPin, IconWind } from "@tabler/icons-react";
 
 import { useCurrentIntlLocale, useI18n } from "@homarr/translation/client";
-import { zoomCompensatedSize } from "@homarr/ui";
+import { iconSizes, zoomCompensatedSize } from "@homarr/ui";
 
 import type { WidgetProps } from "../definition";
 import { AnimatedWeatherIcon } from "./animated-icon";
@@ -79,13 +79,13 @@ export const CompactWeather = ({ height, isEditMode, options, weather, width }: 
       {layout.showHighLow && today && (
         <Group className="weather-max-min-temp-group" gap="sm" wrap="nowrap">
           <Group gap={3} wrap="nowrap">
-            <IconArrowUpRight size="var(--mantine-font-size-md)" aria-hidden />
+            <IconArrowUpRight style={{ ...iconSizes.md, flexShrink: 0 }} aria-hidden />
             <Text size="sm">
               {getPreferredUnit(today.maxTemperature, options.isFormatFahrenheit, options.disableTemperatureDecimals)}
             </Text>
           </Group>
           <Group gap={3} wrap="nowrap">
-            <IconArrowDownRight size="var(--mantine-font-size-md)" aria-hidden />
+            <IconArrowDownRight style={{ ...iconSizes.md, flexShrink: 0 }} aria-hidden />
             <Text size="sm">
               {getPreferredUnit(today.minTemperature, options.isFormatFahrenheit, options.disableTemperatureDecimals)}
             </Text>
@@ -97,13 +97,13 @@ export const CompactWeather = ({ height, isEditMode, options, weather, width }: 
         <Group className={classes.compactMetrics} gap="sm" justify="center" wrap="wrap">
           {options.showHumidity && (
             <Group className="weather-humidity-group" gap={4} wrap="nowrap">
-              <IconDroplets size="var(--mantine-font-size-sm)" aria-hidden />
+              <IconDroplets style={{ ...iconSizes.sm, flexShrink: 0 }} aria-hidden />
               <Text size="sm">{weather.current.relativeHumidity}%</Text>
             </Group>
           )}
           {options.showCurrentWindSpeed && (
             <Group className="weather-current-wind-speed-group" gap={4} wrap="nowrap">
-              <IconWind size="var(--mantine-font-size-sm)" aria-hidden />
+              <IconWind style={{ ...iconSizes.sm, flexShrink: 0 }} aria-hidden />
               <Text size="sm">
                 {getPreferredWindSpeed(weather.current.windSpeed, options.useImperialSpeed)} {speedUnit}
               </Text>
@@ -167,7 +167,7 @@ export const CompactWeather = ({ height, isEditMode, options, weather, width }: 
 
       {layout.showCity && options.showCity && (
         <Group className="weather-city-group" gap={4} wrap="nowrap" maw="100%">
-          <IconMapPin size="var(--mantine-font-size-sm)" aria-hidden />
+          <IconMapPin style={{ ...iconSizes.sm, flexShrink: 0 }} aria-hidden />
           <Text size="sm" truncate>
             {options.location.name}
           </Text>

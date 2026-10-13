@@ -5,6 +5,7 @@ import { IconMovieOff, IconSearch } from "@tabler/icons-react";
 
 import { openMediaRequestSearch } from "@homarr/spotlight";
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 interface MediaRequestsEmptyStateProps {
   title: string;
@@ -38,7 +39,7 @@ export const MediaRequestsEmptyState = ({
         <Button
           variant="light"
           size="compact-sm"
-          leftSection={<IconSearch size="var(--mantine-font-size-md)" />}
+          leftSection={<IconSearch style={{ ...iconSizes.md, flexShrink: 0 }} />}
           onClick={() => openMediaRequestSearch({ integrationIds })}
         >
           {tSearch("action.search.label")}

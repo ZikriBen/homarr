@@ -14,6 +14,7 @@ import {
 import type { RouterOutputs } from "@homarr/api";
 import { useRequiredBoard } from "@homarr/boards/context";
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import { getStatusColor, RUNNING_STATUS } from "./helpers";
 
@@ -168,7 +169,7 @@ function VpnInfoColumn({
       </Text>
       {!dense && (city || country) && (
         <Group gap={4} justify="flex-start" wrap="nowrap">
-          <IconMapPin aria-hidden size="var(--mantine-font-size-xs)" />
+          <IconMapPin aria-hidden style={{ ...iconSizes.xs, flexShrink: 0 }} />
           <Text fs="italic" fw={500} size="sm" lh={1.2} lineClamp={1}>
             {[city, country].filter(Boolean).join(", ")}
           </Text>
@@ -185,7 +186,7 @@ function VpnProviderDetails({ provider, protocol }: { provider: string; protocol
       <Text fz="xs" lh={1.2} tt="capitalize" lineClamp={1}>
         {provider}
       </Text>
-      <IconArrowsExchange stroke={1} size="var(--mantine-font-size-xs)" style={{ flexShrink: 0 }} />
+      <IconArrowsExchange stroke={1} style={{ ...iconSizes.xs, flexShrink: 0 }} />
       <Text fz="xs" lh={1.2} tt="capitalize" lineClamp={1}>
         {protocol}
       </Text>
@@ -205,7 +206,7 @@ function DnsStatusBadge({ status }: { status: string }) {
       color={getStatusColor(status)}
       size="xs"
       radius="xl"
-      leftSection={<StatusIcon aria-hidden size="var(--mantine-font-size-xs)" />}
+      leftSection={<StatusIcon aria-hidden style={{ ...iconSizes.xs, flexShrink: 0 }} />}
     >
       DNS
       <VisuallyHidden> {statusLabel}</VisuallyHidden>

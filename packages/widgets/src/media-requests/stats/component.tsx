@@ -20,6 +20,7 @@ import { useRequiredBoard } from "@homarr/boards/context";
 import type { RequestStats } from "@homarr/integrations/types";
 import { openMediaRequestSearch } from "@homarr/spotlight";
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import { WidgetEmptyState } from "../../common/empty-state";
 import { getSafeApplicationUrl, SAFE_NEW_TAB_REL } from "../../common/application-url";
@@ -140,7 +141,7 @@ export default function MediaServerWidget({
                 <Tooltip label={stat.name === "total" ? tCommon("total") : t(`titles.stats.${stat.name}`)}>
                   <Card p={0} radius={board.itemRadius} className={classes.card}>
                     <Group className="mediaRequests-stats-stat-stack" justify="center" align="center" gap="xs" w="100%">
-                      <stat.icon className="mediaRequests-stats-stat-icon" size="var(--mantine-font-size-md)" />
+                      <stat.icon className="mediaRequests-stats-stat-icon" style={{ ...iconSizes.md, flexShrink: 0 }} />
                       <Text className="mediaRequests-stats-stat-value" size="md">
                         {stat.number}
                       </Text>
@@ -232,7 +233,7 @@ const MediaRequestSearchButton = ({ integrationIds }: { integrationIds: string[]
         aria-label={t("action.search.label")}
         onClick={() => openMediaRequestSearch({ integrationIds })}
       >
-        <IconSearch size="var(--mantine-font-size-md)" />
+        <IconSearch style={{ ...iconSizes.md, flexShrink: 0 }} />
       </ActionIcon>
     </Tooltip>
   );

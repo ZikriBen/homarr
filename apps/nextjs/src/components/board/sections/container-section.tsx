@@ -9,6 +9,7 @@ import { useRequiredBoard } from "@homarr/boards/context";
 import { useEditMode } from "@homarr/boards/edit-mode";
 import { getRootSectionLane } from "@homarr/definitions";
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import type { ContainerSectionItem } from "~/app/[locale]/boards/_types";
 import { CONTAINER_HEADER_HEIGHT } from "~/components/board/layout";
@@ -91,9 +92,9 @@ export const BoardContainerSection = ({ section }: Props) => {
         maw: "100%",
       };
   const toggleIcon = isVisuallyCollapsed ? (
-    <IconChevronDown size="var(--mantine-font-size-md)" />
+    <IconChevronDown style={{ ...iconSizes.md, flexShrink: 0 }} />
   ) : (
-    <IconChevronUp size="var(--mantine-font-size-md)" />
+    <IconChevronUp style={{ ...iconSizes.md, flexShrink: 0 }} />
   );
   const toggleHandlers = {
     onPointerDown: (event: PointerEvent<HTMLButtonElement>) => {
@@ -226,7 +227,7 @@ export const BoardContainerSection = ({ section }: Props) => {
             onClick={openAllInNewTabs}
             aria-label={tSection("action.openAllInNewTabsFor", { name: label })}
           >
-            <IconExternalLink size="var(--mantine-font-size-md)" />
+            <IconExternalLink style={{ ...iconSizes.md, flexShrink: 0 }} />
           </ActionIcon>
         )}
         <Box

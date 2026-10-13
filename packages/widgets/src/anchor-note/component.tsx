@@ -18,6 +18,7 @@ import actionTargetClasses from "../common/action-target.module.css";
 import { storedContentToPlainText } from "./content";
 
 import "./anchor-note.css";
+import { iconSizes } from "@homarr/ui";
 
 const AnchorNoteEditor = dynamic(() => import("./editor"), { ssr: false });
 
@@ -263,7 +264,7 @@ const AnchorNoteWidgetContent = ({
                     onClick={handleEdit}
                     disabled={isUpdating}
                   >
-                    <IconEdit size="var(--mantine-font-size-md)" />
+                    <IconEdit style={{ ...iconSizes.md, flexShrink: 0 }} />
                   </ActionIcon>
                 </Tooltip>
               )}

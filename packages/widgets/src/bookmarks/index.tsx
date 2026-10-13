@@ -3,6 +3,7 @@ import { IconBookmark, IconLink, IconX } from "@tabler/icons-react";
 import { z } from "zod/v4";
 
 import { clientApi } from "@homarr/api/client";
+import { iconSizes } from "@homarr/ui";
 
 import { createWidgetDefinition } from "../definition";
 import { optionsBuilder } from "../options";
@@ -86,7 +87,7 @@ export const { definition, componentLoader } = createWidgetDefinition("bookmarks
               </Group>
 
               <ActionIcon variant="subtle" color="red" onClick={removeItem} aria-label={removeLabel}>
-                <IconX size="var(--mantine-font-size-xl)" />
+                <IconX style={{ ...iconSizes.xl, flexShrink: 0 }} />
               </ActionIcon>
             </Group>
           );

@@ -31,7 +31,7 @@ import { useRequiredBoard } from "@homarr/boards/context";
 import { useIntegrationConnected } from "@homarr/common";
 import { integrationDefs } from "@homarr/definitions";
 import { useI18n } from "@homarr/translation/client";
-import { MaskedOrNormalImage } from "@homarr/ui";
+import { iconSizes, MaskedOrNormalImage } from "@homarr/ui";
 
 import type { widgetKind } from ".";
 import type { WidgetComponentProps } from "../../definition";
@@ -172,7 +172,10 @@ export default function DnsHoleControlsWidget({
               radius={board.itemRadius}
               flex={1}
             >
-              <IconPlayerPlay className="dns-hole-controls-enable-all-icon" size="var(--mantine-font-size-md)" />
+              <IconPlayerPlay
+                className="dns-hole-controls-enable-all-icon"
+                style={{ ...iconSizes.md, flexShrink: 0 }}
+              />
             </Button>
           </Tooltip>
 
@@ -192,7 +195,10 @@ export default function DnsHoleControlsWidget({
                   flex={1}
                   onClick={onClick}
                 >
-                  <IconClockPause className="dns-hole-controls-timer-all-icon" size="var(--mantine-font-size-md)" />
+                  <IconClockPause
+                    className="dns-hole-controls-timer-all-icon"
+                    style={{ ...iconSizes.md, flexShrink: 0 }}
+                  />
                 </Button>
               </Tooltip>
             )}
@@ -214,7 +220,10 @@ export default function DnsHoleControlsWidget({
               radius={board.itemRadius}
               flex={1}
             >
-              <IconPlayerStop className="dns-hole-controls-disable-all-icon" size="var(--mantine-font-size-md)" />
+              <IconPlayerStop
+                className="dns-hole-controls-disable-all-icon"
+                style={{ ...iconSizes.md, flexShrink: 0 }}
+              />
             </Button>
           </Tooltip>
         </Flex>
@@ -359,7 +368,7 @@ const ControlsCard: React.FC<ControlsCardProps> = ({
                       color="green"
                       variant="light"
                     >
-                      <IconPlayerPlay size="var(--mantine-font-size-xs)" />
+                      <IconPlayerPlay style={{ ...iconSizes.xs, flexShrink: 0 }} />
                     </ActionIcon>
                   ) : (
                     <ActionIcon
@@ -371,7 +380,7 @@ const ControlsCard: React.FC<ControlsCardProps> = ({
                       color="red"
                       variant="light"
                     >
-                      <IconPlayerStop size="var(--mantine-font-size-xs)" />
+                      <IconPlayerStop style={{ ...iconSizes.xs, flexShrink: 0 }} />
                     </ActionIcon>
                   )}
                   <TimerPopover
@@ -386,7 +395,7 @@ const ControlsCard: React.FC<ControlsCardProps> = ({
                         disabled={!controlEnabled || !isEnabled}
                         onClick={onClick}
                       >
-                        <IconClockPause size="var(--mantine-font-size-xs)" />
+                        <IconClockPause style={{ ...iconSizes.xs, flexShrink: 0 }} />
                       </ActionIcon>
                     )}
                     selectedIntegrationIds={[data.integration.id]}
@@ -418,7 +427,7 @@ const ControlsCard: React.FC<ControlsCardProps> = ({
                         <IconCircleFilled
                           className="dns-hole-controls-item-status-icon"
                           color={dnsLightStatus(isEnabled)}
-                          size="var(--mantine-font-size-md)"
+                          style={{ ...iconSizes.md, flexShrink: 0 }}
                         />
                       )
                     }
@@ -455,7 +464,10 @@ const ControlsCard: React.FC<ControlsCardProps> = ({
                   variant="subtle"
                   onClick={onClick}
                 >
-                  <IconClockPause className="dns-hole-controls-item-timer-icon" size="var(--mantine-font-size-xl)" />
+                  <IconClockPause
+                    className="dns-hole-controls-item-timer-icon"
+                    style={{ ...iconSizes.xl, flexShrink: 0 }}
+                  />
                 </ActionIcon>
               )}
               selectedIntegrationIds={[data.integration.id]}

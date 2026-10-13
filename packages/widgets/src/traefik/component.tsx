@@ -14,7 +14,7 @@ import {
 import { clientApi } from "@homarr/api/client";
 import type { TraefikDashboardData, TraefikProtocolSummary, TraefikResourceSummary } from "@homarr/integrations/types";
 import { useI18n } from "@homarr/translation/client";
-import { zoomCompensatedSize } from "@homarr/ui";
+import { iconSizes, zoomCompensatedSize } from "@homarr/ui";
 
 import { WidgetEmptyState } from "../common/empty-state";
 import { IntegrationErrorIndicator } from "../common/integration-error-indicator";
@@ -315,7 +315,7 @@ function ProtocolCard({
         {rows.map(({ key, icon: Icon, summary }) => (
           <div key={key} className={classes.protocolRow}>
             <Group gap={4} wrap="nowrap" className={classes.protocolLabel}>
-              <Icon size="var(--mantine-font-size-sm)" />
+              <Icon style={{ ...iconSizes.sm, flexShrink: 0 }} />
               <Text>{resourceLabels[key]}</Text>
             </Group>
             <StatusCount summary={summary} />
@@ -364,7 +364,7 @@ function HealthBadge({ errors, warnings }: { errors: number; warnings: number })
       <Badge
         color="red"
         variant="light"
-        leftSection={<IconAlertTriangle size="var(--mantine-font-size-xs)" />}
+        leftSection={<IconAlertTriangle style={{ ...iconSizes.xs, flexShrink: 0 }} />}
         radius="sm"
       >
         {t("status.errors", { count: errors })}
@@ -377,7 +377,7 @@ function HealthBadge({ errors, warnings }: { errors: number; warnings: number })
       <Badge
         color="yellow"
         variant="light"
-        leftSection={<IconAlertTriangle size="var(--mantine-font-size-xs)" />}
+        leftSection={<IconAlertTriangle style={{ ...iconSizes.xs, flexShrink: 0 }} />}
         radius="sm"
       >
         {t("status.warnings", { count: warnings })}
@@ -389,7 +389,7 @@ function HealthBadge({ errors, warnings }: { errors: number; warnings: number })
     <Badge
       color="green"
       variant="light"
-      leftSection={<IconCircleCheck size="var(--mantine-font-size-xs)" />}
+      leftSection={<IconCircleCheck style={{ ...iconSizes.xs, flexShrink: 0 }} />}
       radius="sm"
     >
       {t("status.healthy")}

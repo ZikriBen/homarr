@@ -7,6 +7,7 @@ import { IconMapPin } from "@tabler/icons-react";
 
 import { clientApi } from "@homarr/api/client";
 import { useCurrentIntlLocale, useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import { WidgetEmptyState } from "../common/empty-state";
 import { formatLocalizedDate, formatLocalizedTime } from "../common/locale";
@@ -182,7 +183,7 @@ const AdvancedAirQuality = ({ airQuality, options, width }: AirQualityViewProps 
           </Stack>
           <Stack gap={2} align="flex-end">
             <Group gap={5} wrap="nowrap">
-              <IconMapPin size="var(--mantine-font-size-md)" aria-hidden />
+              <IconMapPin style={{ ...iconSizes.md, flexShrink: 0 }} aria-hidden />
               <Text size="sm" fw={600}>
                 {options.location.name}
               </Text>

@@ -7,6 +7,7 @@ import { translateIfNecessary } from "@homarr/translation";
 import type { stringOrTranslation } from "@homarr/translation";
 import { useI18n } from "@homarr/translation/client";
 import type { TablerIcon } from "@homarr/ui";
+import { iconSizes } from "@homarr/ui";
 
 import type { CommonWidgetInputProps } from "./common";
 import { useWidgetInputTranslation } from "./common";
@@ -51,20 +52,21 @@ export const WidgetSelectInput = ({ property, kind, options }: CommonWidgetInput
               label: translateIfNecessary(t, option.label) ?? option.value,
             },
       )}
-      leftSection={CurrentIcon && <CurrentIcon size="var(--mantine-font-size-md)" stroke={1.5} />}
+      leftSection={CurrentIcon && <CurrentIcon style={{ ...iconSizes.md, flexShrink: 0 }} stroke={1.5} />}
       renderOption={({ option, checked }) => {
         const Icon = getIconFor(options.options, String(option.value));
 
         return (
           <Group flex="1" gap="xs">
-            {Icon && <Icon color="currentColor" opacity={0.6} size="var(--mantine-font-size-lg)" stroke={1.5} />}
+            {Icon && (
+              <Icon color="currentColor" opacity={0.6} style={{ ...iconSizes.lg, flexShrink: 0 }} stroke={1.5} />
+            )}
             {option.label}
             {checked && (
               <IconCheck
-                style={{ marginInlineStart: "auto" }}
+                style={{ ...iconSizes.lg, flexShrink: 0, marginInlineStart: "auto" }}
                 color="currentColor"
                 opacity={0.6}
-                size="var(--mantine-font-size-lg)"
                 stroke={1.5}
               />
             )}
