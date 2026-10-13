@@ -33,11 +33,22 @@
   }
 }
 
+/* border-collapse: collapse drops a border on the sticky header, so the line is
+   an inset shadow on the cell. The library scroll shadows stay in place. */
+.homarr-data-table .mantine-datatable-header th {
+  border-bottom: none;
+  box-shadow: inset 0 -1px 0 var(--mantine-color-default-border);
+}
+
 .homarr-data-table th {
   padding: 0;
   white-space: nowrap;
-  background-color: color-mix(in srgb, var(--mantine-color-body) 60%, transparent) !important;
-  backdrop-filter: blur(8px);
+  background:
+    linear-gradient(
+      var(--background-color, var(--mantine-color-body)),
+      var(--background-color, var(--mantine-color-body))
+    ),
+    var(--mantine-color-body) !important;
 }
 
 .homarr-data-table td {
