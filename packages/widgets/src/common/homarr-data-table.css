@@ -36,8 +36,7 @@
 .homarr-data-table th {
   padding: 0;
   white-space: nowrap;
-  background-color: color-mix(in srgb, var(--mantine-color-body) 60%, transparent) !important;
-  backdrop-filter: blur(8px);
+  background-color: var(--background-color) !important;
 }
 
 .homarr-data-table td {
