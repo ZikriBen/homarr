@@ -12,6 +12,15 @@
   background-color: transparent;
 }
 
+.homarr-data-table .mantine-datatable-scroll-area {
+  /* Library flex-basis:100% resolves to 0 in Chromium when the table height is
+     indefinite, so the scrollport clips the rows. auto keeps that content size,
+     then shrinks inside a definite card. */
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
 .homarr-data-table .mantine-datatable-table {
   width: 100% !important;
   max-width: 100%;

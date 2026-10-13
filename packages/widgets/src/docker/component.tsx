@@ -44,7 +44,7 @@ import { AddDockerAppToHomarr, useDockerContainerRemovalConfirmation } from "@ho
 import { showErrorNotification, showSuccessNotification } from "@homarr/notifications";
 import { useByteFormatter } from "@homarr/settings";
 import { useI18n } from "@homarr/translation/client";
-import { zoomCompensatedSize } from "@homarr/ui";
+import { iconSizes, zoomCompensatedSize } from "@homarr/ui";
 
 import type { WidgetComponentProps } from "../definition";
 import { getUsableWidgetQueryData } from "../common/query-state";
@@ -429,8 +429,9 @@ export default function DockerWidget({
 
   return (
     <Stack gap={0} h="100%" style={{ overflow: "hidden" }}>
-      <Box style={{ flex: 1, minHeight: 0 }}>
+      <Box style={{ flex: 1, minHeight: 72, display: "flex", flexDirection: "column" }}>
         <HomarrDataTable
+          style={{ flex: "1 1 auto", minHeight: 0, height: "100%" }}
           preserveColumnWidths
           isEditMode={isEditMode}
           cellPadding={isAdvanced || width < 400 ? "2px 8px" : "4px 8px"}
@@ -457,13 +458,14 @@ export default function DockerWidget({
           justify="space-between"
           style={{
             borderTop: "0.0625rem solid var(--border-color)",
+            flexShrink: 0,
           }}
           py={2}
           px={8}
           wrap="nowrap"
         >
           <Group gap={4} wrap="nowrap">
-            <IconBrandDocker size="var(--mantine-font-size-md)" style={{ flexShrink: 0 }} />
+            <IconBrandDocker style={iconSizes.md} />
             <Text size="xs" truncate>
               {t("table.footer", { count: containers.length.toString() })}
             </Text>
