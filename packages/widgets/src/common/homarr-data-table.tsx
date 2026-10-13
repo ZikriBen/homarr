@@ -2,7 +2,7 @@
 
 import "./homarr-data-table.css";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { DataTableColumn, DataTableProps } from "mantine-datatable";
 import { DataTable } from "mantine-datatable";
 
@@ -43,7 +43,44 @@ export function HomarrDataTable<T>({
 }: HomarrDataTableProps<T>) {
   const [resizePreviewWidths, setResizePreviewWidths] = useState<Record<string, number>>();
   const removeResizeListeners = useRef<() => void>(() => undefined);
+  const scrollViewportRef = useRef<HTMLDivElement>(null);
   useEffect(() => () => removeResizeListeners.current(), []);
+  useLayoutEffect(() => {
+    const viewport = scrollViewportRef.current;
+    if (!viewport) return;
+
+    let frames: number[] = [];
+    let lastKey = "";
+    const paintRows = () => {
+      const key = `${viewport.clientWidth}x${viewport.scrollHeight}`;
+      if (key === lastKey) return;
+      lastKey = key;
+      if (viewport.scrollTop !== 0 || viewport.scrollHeight <= viewport.clientHeight + 1) return;
+
+      frames.forEach((frame) => cancelAnimationFrame(frame));
+      frames = [
+        requestAnimationFrame(() => {
+          if (viewport.scrollTop !== 0) return;
+          viewport.scrollTop = 1;
+          frames.push(
+            requestAnimationFrame(() => {
+              if (viewport.scrollTop === 1) viewport.scrollTop = 0;
+            }),
+          );
+        }),
+      ];
+    };
+
+    paintRows();
+    const observer = new ResizeObserver(paintRows);
+    observer.observe(viewport);
+    const content = viewport.firstElementChild;
+    if (content) observer.observe(content);
+    return () => {
+      frames.forEach((frame) => cancelAnimationFrame(frame));
+      observer.disconnect();
+    };
+  }, []);
 
   const handleMouseDownCapture = useCallback(
     (event: React.MouseEvent<HTMLTableElement>) => {
@@ -154,6 +191,7 @@ export function HomarrDataTable<T>({
       textSelectionDisabled
       height="100%"
       {...props}
+      scrollViewportRef={scrollViewportRef}
       striped={false}
       columns={fittedColumns}
       onMouseDownCapture={handleMouseDownCapture}

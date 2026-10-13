@@ -21,6 +21,15 @@
   min-width: 0;
 }
 
+.homarr-data-table .mantine-datatable-scroll-area [data-scrollarea-viewport] {
+  /* Mantine keeps both axes on overflow:scroll. On a wider card the column
+     min-width fits, so only the vertical axis overflows, and Mac Chrome under
+     the board zoom then skips painting the body until that offset changes.
+     auto scrolls just the overflowing axis, and the layer paints on layout. */
+  overflow: auto !important;
+  transform: translateZ(0);
+}
+
 .homarr-data-table .mantine-datatable-table {
   width: 100% !important;
   max-width: 100%;
