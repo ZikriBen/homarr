@@ -34,12 +34,8 @@
 }
 
 /* border-collapse: collapse drops a border on the sticky header, so the line is
-   an inset shadow on the cell. Only the docker table opts out of scroll shadows. */
-.homarr-data-table-no-scroll-shadows .mantine-datatable-scroll-area-shadow {
-  display: none;
-}
-
-.homarr-data-table-no-scroll-shadows .mantine-datatable-header th {
+   an inset shadow on the cell. The library scroll shadows stay in place. */
+.homarr-data-table .mantine-datatable-header th {
   border-bottom: none;
   box-shadow: inset 0 -1px 0 var(--mantine-color-default-border);
 }
