@@ -36,7 +36,7 @@ import { formatBitRate, objectEntries } from "@homarr/common";
 import { getIconUrl } from "@homarr/definitions";
 import type { StreamSession } from "@homarr/integrations";
 import { useI18n } from "@homarr/translation/client";
-import { zoomCompensatedSize } from "@homarr/ui";
+import { iconSizes, zoomCompensatedSize } from "@homarr/ui";
 import type { TablerIcon } from "@homarr/ui";
 
 import type { WidgetComponentProps } from "../definition";
@@ -153,7 +153,7 @@ function StreamTableHeader({
             {label}
           </Text>
           <SortIcon
-            size="var(--mantine-font-size-xs)"
+            style={{ ...iconSizes.xs, flexShrink: 0 }}
             aria-hidden
             color={active ? undefined : "var(--mantine-color-dimmed)"}
           />
@@ -260,7 +260,7 @@ export default function MediaServerWidget({
               onChange={(event) => setSearch(event.currentTarget.value)}
               placeholder={tSearch("placeholder")}
               aria-label={tSearch("placeholder")}
-              leftSection={<IconSearch size="var(--mantine-font-size-xs)" aria-hidden />}
+              leftSection={<IconSearch style={{ ...iconSizes.xs, flexShrink: 0 }} aria-hidden />}
             />
             <IntegrationErrorIndicator results={currentStreams} />
           </Group>
@@ -379,9 +379,9 @@ export default function MediaServerWidget({
                             {location && (
                               <Group gap={4} align="center" wrap="nowrap">
                                 {location === "lan" ? (
-                                  <IconWifi size="var(--mantine-font-size-xs)" />
+                                  <IconWifi style={{ ...iconSizes.xs, flexShrink: 0 }} />
                                 ) : (
-                                  <IconWorld size="var(--mantine-font-size-xs)" />
+                                  <IconWorld style={{ ...iconSizes.xs, flexShrink: 0 }} />
                                 )}
                                 <Text size="xs" c="dimmed" tt="uppercase">
                                   {location}
@@ -514,9 +514,8 @@ function CurrentlyPlaying({ item }: { item: StreamSession }) {
     <Stack gap={6} style={{ minWidth: 0 }}>
       <Group gap="xs" align="center" wrap="nowrap" style={{ minWidth: 0 }}>
         <Icon
-          size="var(--mantine-font-size-xs)"
           color={isPaused ? "var(--mantine-color-yellow-6)" : undefined}
-          style={{ flexShrink: 0 }}
+          style={{ ...iconSizes.xs, flexShrink: 0 }}
         />
         <Text size="xs" lineClamp={1} style={{ minWidth: 0 }}>
           {currentlyPlaying.name}

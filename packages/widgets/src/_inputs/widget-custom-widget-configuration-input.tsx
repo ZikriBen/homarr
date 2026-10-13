@@ -27,6 +27,7 @@ import { CustomWidgetCodeEditor } from "@homarr/custom-widgets/workbench";
 import type { CustomWidgetEditorMessages } from "@homarr/custom-widgets/workbench";
 import { IconPicker } from "@homarr/forms-collection";
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import type { CommonWidgetInputProps } from "./common";
 import { useFormContext } from "./form";
@@ -77,7 +78,7 @@ export const WidgetCustomWidgetConfigurationInput = ({
   return (
     <Stack gap="md">
       {issues[0] && (
-        <Alert color="yellow" variant="light" icon={<IconAlertTriangle size="var(--mantine-font-size-md)" />}>
+        <Alert color="yellow" variant="light" icon={<IconAlertTriangle style={{ ...iconSizes.md, flexShrink: 0 }} />}>
           <Text size="sm">{labels("needsAttention", { message: issues[0].message })}</Text>
         </Alert>
       )}

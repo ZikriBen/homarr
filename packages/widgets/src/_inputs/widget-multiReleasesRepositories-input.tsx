@@ -49,7 +49,7 @@ import { IconPicker } from "@homarr/forms-collection";
 import { createModal, useModalAction } from "@homarr/modals";
 import { showErrorNotification } from "@homarr/notifications";
 import { useI18n } from "@homarr/translation/client";
-import { MaskedImage } from "@homarr/ui";
+import { iconSizes, MaskedImage } from "@homarr/ui";
 
 import type { ReleasesRepository, ReleasesVersionFilter } from "../releases/releases-repository";
 import type { CommonWidgetInputProps } from "./common";
@@ -230,7 +230,7 @@ export const WidgetMultiReleasesRepositoriesInput = ({
                     })
                   }
                   variant="light"
-                  leftSection={<IconEdit size="var(--mantine-font-size-sm)" />}
+                  leftSection={<IconEdit style={{ ...iconSizes.sm, flexShrink: 0 }} />}
                   size="xs"
                 >
                   {actionT("edit")}
@@ -242,12 +242,15 @@ export const WidgetMultiReleasesRepositoriesInput = ({
                   aria-label={actionT("deleteNamed", { name: repository.name || repository.identifier })}
                   onClick={() => onRepositoryRemove(index)}
                 >
-                  <IconTrash size="var(--mantine-font-size-sm)" />
+                  <IconTrash style={{ ...iconSizes.sm, flexShrink: 0 }} />
                 </ActionIcon>
               </Group>
               {Object.keys(form.errors).filter((key) => key.startsWith(`options.${property}.${index}.`)).length > 0 && (
                 <Group align="center" justify="center" gap="xs" bg="red.1">
-                  <IconTriangleFilled size="var(--mantine-font-size-sm)" color="var(--mantine-color-red-filled)" />
+                  <IconTriangleFilled
+                    style={{ ...iconSizes.sm, flexShrink: 0 }}
+                    color="var(--mantine-color-red-filled)"
+                  />
                   <Text size="sm" c="red">
                     {tRepository("invalid")}
                   </Text>
@@ -385,7 +388,7 @@ const ProviderTokenInput = ({
         }}
         style={{ flex: 1 }}
         size="xs"
-        leftSection={<IconKey size="var(--mantine-font-size-sm)" />}
+        leftSection={<IconKey style={{ ...iconSizes.sm, flexShrink: 0 }} />}
       />
       {editing && value.trim() && (
         <Button size="xs" onClick={handleSave} loading={saving}>
@@ -403,7 +406,7 @@ const ProviderTokenInput = ({
           onClick={handleDelete}
           loading={saving}
         >
-          <IconTrash size="var(--mantine-font-size-sm)" />
+          <IconTrash style={{ ...iconSizes.sm, flexShrink: 0 }} />
         </ActionIcon>
       )}
     </Group>

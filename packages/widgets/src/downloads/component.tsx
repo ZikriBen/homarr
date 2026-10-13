@@ -52,6 +52,7 @@ import type { ExtendedClientStatus, ExtendedDownloadClientItem } from "@homarr/i
 import { showErrorNotification } from "@homarr/notifications";
 import { useByteFormatter } from "@homarr/settings";
 import { useCurrentIntlLocale, useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import type { WidgetComponentProps } from "../definition";
 import { IntegrationErrorIndicator } from "../common/integration-error-indicator";
@@ -288,7 +289,7 @@ function SpeedCell({
   const { Icon, color } = speedColumnConfig[direction];
   return (
     <Group gap={4} wrap="nowrap">
-      <Icon size="var(--mantine-font-size-xs)" style={{ flexShrink: 0, opacity: 0.5 }} />
+      <Icon style={{ ...iconSizes.xs, flexShrink: 0, opacity: 0.5 }} />
       <Text size={fontSize} c={color}>
         {formatByteRate(speed)}
       </Text>
@@ -929,7 +930,7 @@ function ExpandedRow({ item, collapse }: { item: ExtendedDownloadClientItem; col
               <DetailPair
                 label={t("items.downSpeed.detailsTitle")}
                 value={formatByteRate(item.downSpeed)}
-                icon={<IconDownload size="var(--mantine-font-size-xs)" />}
+                icon={<IconDownload style={{ ...iconSizes.xs, flexShrink: 0 }} />}
                 color="blue"
               />
             )}
@@ -937,7 +938,7 @@ function ExpandedRow({ item, collapse }: { item: ExtendedDownloadClientItem; col
               <DetailPair
                 label={t("items.upSpeed.detailsTitle")}
                 value={formatByteRate(item.upSpeed)}
-                icon={<IconUpload size="var(--mantine-font-size-xs)" />}
+                icon={<IconUpload style={{ ...iconSizes.xs, flexShrink: 0 }} />}
                 color="green"
               />
             )}
@@ -1021,7 +1022,7 @@ function GlobalStatsBar({
 
           <Tooltip label={t("stats.totalSize")} withArrow>
             <Group gap={4}>
-              <IconDatabase size="var(--mantine-font-size-xs)" style={{ opacity: 0.6 }} />
+              <IconDatabase style={{ ...iconSizes.xs, flexShrink: 0, opacity: 0.6 }} />
               <Text size="xs">{formatSizePair(queueStats.completedSize, queueStats.totalSize, formatBytesPair)}</Text>
             </Group>
           </Tooltip>
@@ -1029,14 +1030,14 @@ function GlobalStatsBar({
 
         <Group gap="md">
           <Group gap={4}>
-            <IconDownload size="var(--mantine-font-size-xs)" style={{ opacity: 0.6 }} />
+            <IconDownload style={{ ...iconSizes.xs, flexShrink: 0, opacity: 0.6 }} />
             <Text size="xs" fw={600} c="blue">
               {formatByteRate(totalSpeed)}
             </Text>
           </Group>
           {totalUpSpeed > 0 && (
             <Group gap={4}>
-              <IconUpload size="var(--mantine-font-size-xs)" style={{ opacity: 0.6 }} />
+              <IconUpload style={{ ...iconSizes.xs, flexShrink: 0, opacity: 0.6 }} />
               <Text size="xs" fw={600} c="green">
                 {formatByteRate(totalUpSpeed)}
               </Text>
@@ -1109,7 +1110,7 @@ function RowContextMenu({ state, onClose, t }: { state: ContextMenuState; onClos
             <Menu.Label>{truncateText(item.name, 40)}</Menu.Label>
 
             <Menu.Item
-              leftSection={<IconInfoCircle size="var(--mantine-font-size-sm)" />}
+              leftSection={<IconInfoCircle style={{ ...iconSizes.sm, flexShrink: 0 }} />}
               onClick={() => {
                 void navigator.clipboard.writeText(item.name).catch(() => {});
                 onClose();
@@ -1120,7 +1121,7 @@ function RowContextMenu({ state, onClose, t }: { state: ContextMenuState; onClos
 
             {item.id && (
               <Menu.Item
-                leftSection={<IconCopy size="var(--mantine-font-size-sm)" />}
+                leftSection={<IconCopy style={{ ...iconSizes.sm, flexShrink: 0 }} />}
                 onClick={() => {
                   void navigator.clipboard.writeText(item.id).catch(() => {});
                   onClose();
@@ -1134,7 +1135,7 @@ function RowContextMenu({ state, onClose, t }: { state: ContextMenuState; onClos
               <>
                 <Menu.Divider />
                 <Menu.Item
-                  leftSection={<PauseResumeIcon size="var(--mantine-font-size-sm)" />}
+                  leftSection={<PauseResumeIcon style={{ ...iconSizes.sm, flexShrink: 0 }} />}
                   onClick={() => {
                     pauseResumeInvoke?.();
                     onClose();
@@ -1146,7 +1147,7 @@ function RowContextMenu({ state, onClose, t }: { state: ContextMenuState; onClos
                 {!showDeleteConfirm && (
                   <Menu.Item
                     color="red"
-                    leftSection={<IconTrash size="var(--mantine-font-size-sm)" />}
+                    leftSection={<IconTrash style={{ ...iconSizes.sm, flexShrink: 0 }} />}
                     onClick={(e) => {
                       e.stopPropagation();
                       openDelete();
@@ -1160,7 +1161,7 @@ function RowContextMenu({ state, onClose, t }: { state: ContextMenuState; onClos
                   <>
                     <Menu.Item
                       color="red"
-                      leftSection={<IconTrash size="var(--mantine-font-size-sm)" />}
+                      leftSection={<IconTrash style={{ ...iconSizes.sm, flexShrink: 0 }} />}
                       onClick={() => {
                         item.actions?.delete({ fromDisk: false });
                         onClose();
@@ -1170,7 +1171,7 @@ function RowContextMenu({ state, onClose, t }: { state: ContextMenuState; onClos
                     </Menu.Item>
                     <Menu.Item
                       color="red"
-                      leftSection={<IconTrashX size="var(--mantine-font-size-sm)" />}
+                      leftSection={<IconTrashX style={{ ...iconSizes.sm, flexShrink: 0 }} />}
                       onClick={() => {
                         item.actions?.delete({ fromDisk: true });
                         onClose();
@@ -1338,14 +1339,14 @@ function WidgetFooter({
                 }
               }}
             >
-              <FilterIcon size="var(--mantine-font-size-sm)" />
+              <FilterIcon style={{ ...iconSizes.sm, flexShrink: 0 }} />
             </ActionIcon>
           </Tooltip>
 
           {toggleStats ? (
             <Tooltip label={statsTooltip}>
               <ActionIcon size="xs" variant={statsIconVariant} aria-label={statsTooltip} onClick={toggleStats}>
-                <StatsIcon size="var(--mantine-font-size-sm)" />
+                <StatsIcon style={{ ...iconSizes.sm, flexShrink: 0 }} />
               </ActionIcon>
             </Tooltip>
           ) : null}
@@ -1373,7 +1374,7 @@ function WidgetFooter({
                   disabled={integrationsStatuses.paused.length === 0}
                   onClick={() => resumeQueue({ integrationIds: integrationsStatuses.paused })}
                 >
-                  <IconPlayerPlay size="var(--mantine-font-size-sm)" />
+                  <IconPlayerPlay style={{ ...iconSizes.sm, flexShrink: 0 }} />
                 </ActionIcon>
               </Tooltip>
             )}
@@ -1381,18 +1382,12 @@ function WidgetFooter({
             {!showStats && (
               <Group gap={2}>
                 <Text size="xs" fw={600} c="blue">
-                  <IconDownload
-                    size="var(--mantine-font-size-xs)"
-                    style={{ verticalAlign: "middle", marginRight: 2 }}
-                  />
+                  <IconDownload style={{ ...iconSizes.xs, flexShrink: 0, verticalAlign: "middle", marginRight: 2 }} />
                   {formatByteRate(totalSpeed)}
                 </Text>
                 {totalUpSpeed > 0 && (
                   <Text size="xs" fw={600} c="green">
-                    <IconUpload
-                      size="var(--mantine-font-size-xs)"
-                      style={{ verticalAlign: "middle", marginRight: 2 }}
-                    />
+                    <IconUpload style={{ ...iconSizes.xs, flexShrink: 0, verticalAlign: "middle", marginRight: 2 }} />
                     {formatByteRate(totalUpSpeed)}
                   </Text>
                 )}
@@ -1409,7 +1404,7 @@ function WidgetFooter({
                   disabled={integrationsStatuses.active.length === 0}
                   onClick={() => pauseQueue({ integrationIds: integrationsStatuses.active })}
                 >
-                  <IconPlayerPause size="var(--mantine-font-size-sm)" />
+                  <IconPlayerPause style={{ ...iconSizes.sm, flexShrink: 0 }} />
                 </ActionIcon>
               </Tooltip>
             )}

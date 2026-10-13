@@ -176,7 +176,7 @@ export const AdvancedWeather = ({ height, options, weather, width }: AdvancedWea
           </Group>
           <Stack gap={2} align="flex-end" className={classes.locationSummary}>
             <Group gap={5} wrap="nowrap" maw="100%">
-              <IconMapPin size="var(--mantine-font-size-md)" aria-hidden />
+              <IconMapPin style={{ ...iconSizes.md, flexShrink: 0 }} aria-hidden />
               <Text size="sm" fw={600} truncate>
                 {options.location.name}
               </Text>

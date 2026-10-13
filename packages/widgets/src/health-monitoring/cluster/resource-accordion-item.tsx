@@ -3,6 +3,7 @@ import type { MantineColor } from "@mantine/core";
 import { Accordion, Badge, Group, Text } from "@mantine/core";
 
 import type { TablerIcon } from "@homarr/ui";
+import { iconSizes } from "@homarr/ui";
 
 interface ResourceAccordionItemProps {
   value: string;
@@ -26,7 +27,7 @@ export const ResourceAccordionItem = ({
 }: PropsWithChildren<ResourceAccordionItemProps>) => {
   return (
     <Accordion.Item value={value}>
-      <Accordion.Control icon={isTiny ? null : <Icon size="var(--mantine-font-size-md)" />}>
+      <Accordion.Control icon={isTiny ? null : <Icon style={{ ...iconSizes.md, flexShrink: 0 }} />}>
         <Group style={{ rowGap: "0" }} gap="xs">
           <Text size="xs">{title}</Text>
           <Badge variant="dot" color={badge.color} size="xs">

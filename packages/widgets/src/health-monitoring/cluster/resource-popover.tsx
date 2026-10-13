@@ -20,7 +20,7 @@ import { capitalize } from "@homarr/common";
 import type { ComputeResource, Resource, StorageResource } from "@homarr/integrations/types";
 import { useByteFormatter } from "@homarr/settings";
 import { useI18n } from "@homarr/translation/client";
-import { zoomCompensatedSize } from "@homarr/ui";
+import { iconSizes, zoomCompensatedSize } from "@homarr/ui";
 
 dayjs.extend(duration);
 
@@ -100,20 +100,20 @@ const ComputeResourceDetails = ({ item }: { item: ComputeResource }) => {
   const storage = formatBytesPair(item.storage.used, item.storage.total);
   return (
     <List>
-      <List.Item icon={<IconCpu size="var(--mantine-font-size-md)" />}>
+      <List.Item icon={<IconCpu style={{ ...iconSizes.md, flexShrink: 0 }} />}>
         {t("cpu")} - {item.cpu.cores}
       </List.Item>
-      <List.Item icon={<IconBrain size="var(--mantine-font-size-md)" />}>
+      <List.Item icon={<IconBrain style={{ ...iconSizes.md, flexShrink: 0 }} />}>
         {t("memory")} - {memory.used} / {memory.total}
       </List.Item>
-      <List.Item icon={<IconDatabase size="var(--mantine-font-size-md)" />}>
+      <List.Item icon={<IconDatabase style={{ ...iconSizes.md, flexShrink: 0 }} />}>
         {t("storage")} - {storage.used} / {storage.total}
       </List.Item>
-      <List.Item icon={<IconClockHour3 size="var(--mantine-font-size-md)" />}>
+      <List.Item icon={<IconClockHour3 style={{ ...iconSizes.md, flexShrink: 0 }} />}>
         {t("uptime")} - {dayjs(dayjs().add(-item.uptime, "seconds")).fromNow(true)}
       </List.Item>
       {item.haState && (
-        <List.Item icon={<IconHeartBolt size="var(--mantine-font-size-md)" />}>
+        <List.Item icon={<IconHeartBolt style={{ ...iconSizes.md, flexShrink: 0 }} />}>
           {t("haState")} - {capitalize(item.haState)}
         </List.Item>
       )}
@@ -157,15 +157,15 @@ const DiskStats = ({ item }: { item: ComputeResource }) => {
     return null;
   }
   return (
-    <List.Item icon={<IconDatabase size="var(--mantine-font-size-md)" />}>
+    <List.Item icon={<IconDatabase style={{ ...iconSizes.md, flexShrink: 0 }} />}>
       <Group gap="sm">
         <Group gap={0}>
           <Text>{formatBytes(item.storage.write)}</Text>
-          <IconArrowNarrowDown size="var(--mantine-font-size-sm)" />
+          <IconArrowNarrowDown style={{ ...iconSizes.sm, flexShrink: 0 }} />
         </Group>
         <Group gap={0}>
           <Text>{formatBytes(item.storage.read)}</Text>
-          <IconArrowNarrowUp size="var(--mantine-font-size-sm)" />
+          <IconArrowNarrowUp style={{ ...iconSizes.sm, flexShrink: 0 }} />
         </Group>
       </Group>
     </List.Item>
@@ -178,15 +178,15 @@ const NetStats = ({ item }: { item: ComputeResource }) => {
     return null;
   }
   return (
-    <List.Item icon={<IconNetwork size="var(--mantine-font-size-md)" />}>
+    <List.Item icon={<IconNetwork style={{ ...iconSizes.md, flexShrink: 0 }} />}>
       <Group gap="sm">
         <Group gap={0}>
           <Text>{formatBytes(item.network.in)}</Text>
-          <IconArrowNarrowDown size="var(--mantine-font-size-sm)" />
+          <IconArrowNarrowDown style={{ ...iconSizes.sm, flexShrink: 0 }} />
         </Group>
         <Group gap={0}>
           <Text>{formatBytes(item.network.out)}</Text>
-          <IconArrowNarrowUp size="var(--mantine-font-size-sm)" />
+          <IconArrowNarrowUp style={{ ...iconSizes.sm, flexShrink: 0 }} />
         </Group>
       </Group>
     </List.Item>

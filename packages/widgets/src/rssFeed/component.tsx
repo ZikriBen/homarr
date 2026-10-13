@@ -8,6 +8,7 @@ import type { RouterInputs, RouterOutputs } from "@homarr/api";
 import { clientApi } from "@homarr/api/client";
 import { useRequiredBoard } from "@homarr/boards/context";
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import { getSafeApplicationUrl, SAFE_NEW_TAB_REL } from "../common/application-url";
 import { WidgetEmptyState } from "../common/empty-state";
@@ -47,8 +48,7 @@ export default function RssFeed({ options, width, height, displayMode }: WidgetC
   const feed = useLiveFeed({
     urls: options.feedUrls,
     maximumAmountPosts: typeof options.maximumAmountPosts === "number" ? options.maximumAmountPosts : 100,
-    descriptionMaxLength:
-      typeof options.descriptionMaxLength === "number" ? options.descriptionMaxLength : 250,
+    descriptionMaxLength: typeof options.descriptionMaxLength === "number" ? options.descriptionMaxLength : 250,
   });
 
   const board = useRequiredBoard();
@@ -78,7 +78,7 @@ export default function RssFeed({ options, width, height, displayMode }: WidgetC
           <Alert
             role="presentation"
             color="orange"
-            icon={<IconAlertTriangle aria-hidden size="var(--mantine-font-size-md)" />}
+            icon={<IconAlertTriangle aria-hidden style={{ ...iconSizes.md, flexShrink: 0 }} />}
             p="xs"
           >
             <output>{warning}</output>
@@ -114,7 +114,7 @@ export default function RssFeed({ options, width, height, displayMode }: WidgetC
         <Alert
           role="presentation"
           color="orange"
-          icon={<IconAlertTriangle aria-hidden size="var(--mantine-font-size-md)" />}
+          icon={<IconAlertTriangle aria-hidden style={{ ...iconSizes.md, flexShrink: 0 }} />}
           p="xs"
           mb="xs"
         >

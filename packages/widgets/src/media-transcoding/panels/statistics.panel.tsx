@@ -7,6 +7,7 @@ import type { TdarrPieSegment, TdarrStatistics } from "@homarr/integrations";
 import { useByteFormatter } from "@homarr/settings";
 import { useI18n } from "@homarr/translation/client";
 import type { TablerIcon } from "@homarr/ui";
+import { iconSizes } from "@homarr/ui";
 
 const PIE_COLORS: MantineColor[] = ["cyan", "grape", "gray", "orange", "pink"];
 
@@ -100,7 +101,7 @@ function StatisticItem(props: StatisticItemProps) {
     <Tooltip label={props.label}>
       <Card p={0} radius={board.itemRadius} miw={48} flex={1} bg="transparent">
         <Group justify="center" align="center" gap="xs" w="100%" wrap="nowrap">
-          <props.icon size="var(--mantine-font-size-md)" style={{ flexShrink: 0 }} />
+          <props.icon style={{ ...iconSizes.md, flexShrink: 0 }} />
           <Text size="md">{props.value}</Text>
         </Group>
       </Card>

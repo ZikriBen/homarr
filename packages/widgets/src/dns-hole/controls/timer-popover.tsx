@@ -6,6 +6,7 @@ import { IconClockPause } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 interface TimerPopoverProps {
   target: (onClick: () => void) => ReactNode;
@@ -129,7 +130,7 @@ const TimerPopover = ({ target, selectedIntegrationIds, disableDns }: TimerPopov
             <Button
               variant="light"
               color="red"
-              leftSection={<IconClockPause size="var(--mantine-font-size-xl)" />}
+              leftSection={<IconClockPause style={{ ...iconSizes.xl, flexShrink: 0 }} />}
               h="2rem"
               w="12rem"
               onClick={handleSetTimer}

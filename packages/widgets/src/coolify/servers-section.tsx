@@ -12,6 +12,7 @@ import {
 
 import type { CoolifyServer } from "@homarr/integrations/types";
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import actionTargetClasses from "../common/action-target.module.css";
 import { getSafeApplicationUrl, SAFE_NEW_TAB_REL } from "../common/application-url";
@@ -44,7 +45,7 @@ export function ServersSection({
     <Accordion.Item value="servers">
       <Group gap={0} wrap="nowrap">
         <Accordion.Control
-          icon={isTiny ? null : <IconServer size="var(--mantine-font-size-md)" />}
+          icon={isTiny ? null : <IconServer style={{ ...iconSizes.md, flexShrink: 0 }} />}
           style={{ flex: 1, minWidth: 0 }}
         >
           <Group gap="xs">
@@ -64,7 +65,11 @@ export function ServersSection({
           mr="xs"
           onClick={onToggleIp}
         >
-          {showIp ? <IconEye size="var(--mantine-font-size-xs)" /> : <IconEyeOff size="var(--mantine-font-size-xs)" />}
+          {showIp ? (
+            <IconEye style={{ ...iconSizes.xs, flexShrink: 0 }} />
+          ) : (
+            <IconEyeOff style={{ ...iconSizes.xs, flexShrink: 0 }} />
+          )}
         </ActionIcon>
       </Group>
       <Accordion.Panel p={4}>

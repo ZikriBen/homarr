@@ -25,6 +25,7 @@ import dayjs from "dayjs";
 import { createId } from "@homarr/common";
 import type { WidgetKind } from "@homarr/definitions";
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import { formatWallDateTime, resolveWallDateTimeString } from "../countdown/recurrence";
 import type { DateTimeEventRecurrence, OptionDateTimeEvent } from "../options";
@@ -83,7 +84,7 @@ export const WidgetDateTimeEventListInput = ({
         <Button
           type="button"
           variant="light"
-          leftSection={<IconPlus size="var(--mantine-font-size-md)" />}
+          leftSection={<IconPlus style={{ ...iconSizes.md, flexShrink: 0 }} />}
           onClick={addEvent}
           disabled={values.length >= options.maxValues}
         >
@@ -185,7 +186,7 @@ const SortableEvent = ({ kind, event, timeZoneOptions, onChange, onRemove }: Sor
             aria-label={t("reorder", { event: event.label })}
             style={{ cursor: "grab" }}
           >
-            <IconGripVertical size="var(--mantine-font-size-lg)" />
+            <IconGripVertical style={{ ...iconSizes.lg, flexShrink: 0 }} />
           </ActionIcon>
           <TextInput
             flex={1}
@@ -201,7 +202,7 @@ const SortableEvent = ({ kind, event, timeZoneOptions, onChange, onRemove }: Sor
             aria-label={t("remove", { event: event.label })}
             onClick={onRemove}
           >
-            <IconTrash size="var(--mantine-font-size-lg)" />
+            <IconTrash style={{ ...iconSizes.lg, flexShrink: 0 }} />
           </ActionIcon>
         </Group>
 

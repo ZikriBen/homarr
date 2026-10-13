@@ -44,7 +44,7 @@ import { AddDockerAppToHomarr, useDockerContainerRemovalConfirmation } from "@ho
 import { showErrorNotification, showSuccessNotification } from "@homarr/notifications";
 import { useByteFormatter } from "@homarr/settings";
 import { useI18n } from "@homarr/translation/client";
-import { zoomCompensatedSize } from "@homarr/ui";
+import { iconSizes, zoomCompensatedSize } from "@homarr/ui";
 
 import type { WidgetComponentProps } from "../definition";
 import { getUsableWidgetQueryData } from "../common/query-state";
@@ -463,7 +463,7 @@ export default function DockerWidget({
           wrap="nowrap"
         >
           <Group gap={4} wrap="nowrap">
-            <IconBrandDocker size="var(--mantine-font-size-md)" style={{ flexShrink: 0 }} />
+            <IconBrandDocker style={{ ...iconSizes.md, flexShrink: 0 }} />
             <Text size="xs" truncate>
               {t("table.footer", { count: containers.length.toString() })}
             </Text>
@@ -575,7 +575,7 @@ function ContainerActionItems({
         {container.name}
       </Menu.Label>
       <Menu.Item
-        leftSection={<IconFileText size="var(--mantine-font-size-sm)" />}
+        leftSection={<IconFileText style={{ ...iconSizes.sm, flexShrink: 0 }} />}
         disabled={!handlers.canUse(container, "logs")}
         onClick={() => {
           handlers.onOpenLogs(container);
@@ -587,7 +587,7 @@ function ContainerActionItems({
       <Menu.Divider />
       <Menu.Item
         color={stateAction === "start" ? "green" : "red"}
-        leftSection={<StateIcon size="var(--mantine-font-size-sm)" />}
+        leftSection={<StateIcon style={{ ...iconSizes.sm, flexShrink: 0 }} />}
         disabled={!handlers.canUse(container, "lifecycle")}
         onClick={() => invokeAction(stateAction)}
       >
@@ -595,7 +595,7 @@ function ContainerActionItems({
       </Menu.Item>
       <Menu.Item
         color="orange"
-        leftSection={<IconRotateClockwise size="var(--mantine-font-size-sm)" />}
+        leftSection={<IconRotateClockwise style={{ ...iconSizes.sm, flexShrink: 0 }} />}
         disabled={!handlers.canUse(container, "lifecycle")}
         onClick={() => invokeAction("restart")}
       >
@@ -603,7 +603,7 @@ function ContainerActionItems({
       </Menu.Item>
       <Menu.Item
         color="red"
-        leftSection={<IconTrash size="var(--mantine-font-size-sm)" />}
+        leftSection={<IconTrash style={{ ...iconSizes.sm, flexShrink: 0 }} />}
         disabled={!handlers.canUse(container, "remove")}
         onClick={() => invokeAction("remove")}
       >
@@ -611,7 +611,7 @@ function ContainerActionItems({
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item
-        leftSection={<IconCategoryPlus size="var(--mantine-font-size-sm)" />}
+        leftSection={<IconCategoryPlus style={{ ...iconSizes.sm, flexShrink: 0 }} />}
         onClick={() => {
           handlers.onAddToHomarr(container);
           onClose();

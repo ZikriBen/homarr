@@ -23,6 +23,7 @@ import { IconGripVertical, IconPlus, IconTrash } from "@tabler/icons-react";
 import { createId } from "@homarr/common";
 import type { WidgetKind } from "@homarr/definitions";
 import { useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import type { OptionTimezone } from "../options";
 import type { CommonWidgetInputProps } from "./common";
@@ -92,7 +93,7 @@ export const WidgetTimezoneListInput = ({ property, kind, options }: CommonWidge
             nothingFoundMessage={tEditor("noResults")}
           />
           <Button
-            leftSection={<IconPlus size="var(--mantine-font-size-md)" />}
+            leftSection={<IconPlus style={{ ...iconSizes.md, flexShrink: 0 }} />}
             onClick={addSelectedTimeZone}
             disabled={isFull || selectedTimeZone === null}
           >
@@ -197,7 +198,7 @@ const SortableTimezone = ({
           aria-label={t("reorder", { city: city.label })}
           style={{ cursor: "grab" }}
         >
-          <IconGripVertical size="var(--mantine-font-size-lg)" />
+          <IconGripVertical style={{ ...iconSizes.lg, flexShrink: 0 }} />
         </ActionIcon>
         <TextInput
           flex={1}
@@ -225,7 +226,7 @@ const SortableTimezone = ({
           aria-label={t("remove", { city: city.label })}
           onClick={onRemove}
         >
-          <IconTrash size="var(--mantine-font-size-lg)" />
+          <IconTrash style={{ ...iconSizes.lg, flexShrink: 0 }} />
         </ActionIcon>
       </Group>
     </Card>

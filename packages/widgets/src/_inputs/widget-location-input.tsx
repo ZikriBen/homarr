@@ -22,6 +22,7 @@ import { IconClick, IconListSearch } from "@tabler/icons-react";
 import type { RouterOutputs } from "@homarr/api";
 import { clientApi } from "@homarr/api/client";
 import { useCurrentIntlLocale, useI18n } from "@homarr/translation/client";
+import { iconSizes } from "@homarr/ui";
 
 import { formatLocalizedCompactNumber } from "../common/locale";
 import type { OptionLocation } from "../options";
@@ -94,7 +95,7 @@ export const WidgetLocationInput = ({ property, kind, options }: CommonWidgetInp
                 disabled={!selectionEnabled}
                 onClick={onSearch}
                 variant="light"
-                leftSection={<IconListSearch size="var(--mantine-font-size-md)" />}
+                leftSection={<IconListSearch style={{ ...iconSizes.md, flexShrink: 0 }} />}
               >
                 {tLocation("search")}
               </Button>
@@ -263,7 +264,7 @@ const LocationSelectResult = ({ city, onLocationSelect }: LocationSelectResultPr
               countryCode: city.country_code ?? "??",
             })}
           >
-            <IconClick size="var(--mantine-font-size-md)" />
+            <IconClick style={{ ...iconSizes.md, flexShrink: 0 }} />
           </ActionIcon>
         </Tooltip>
       </Group>
