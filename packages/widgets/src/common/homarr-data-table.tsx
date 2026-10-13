@@ -26,6 +26,7 @@ type HomarrDataTableProps<T> = DataTableProps<T> & {
   cellPadding: string;
   rowCursor?: "auto" | "default";
   preserveColumnWidths?: boolean;
+  scrollShadows?: boolean;
 };
 
 export function HomarrDataTable<T>({
@@ -33,6 +34,7 @@ export function HomarrDataTable<T>({
   cellPadding,
   rowCursor = "auto",
   preserveColumnWidths = false,
+  scrollShadows = true,
   className,
   columns,
   defaultColumnProps,
@@ -108,6 +110,7 @@ export function HomarrDataTable<T>({
 
   const mergedClassName = [
     "homarr-data-table",
+    scrollShadows ? undefined : "homarr-data-table-no-scroll-shadows",
     rowCursor === "default" ? "homarr-data-table-row-cursor-default" : undefined,
     className,
   ]

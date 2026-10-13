@@ -33,24 +33,26 @@
   }
 }
 
-/* The library fades these overlays from the scroll offset. On Mac that paints
-   dark bands into the rows. Static borders below do not follow the scroll. */
-.homarr-data-table .mantine-datatable-scroll-area-shadow {
+/* border-collapse: collapse drops a border on the sticky header, so the line is
+   an inset shadow on the cell. Only the docker table opts out of scroll shadows. */
+.homarr-data-table-no-scroll-shadows .mantine-datatable-scroll-area-shadow {
   display: none;
 }
 
-.homarr-data-table .mantine-datatable-header {
-  border-bottom: calc(0.0625rem * var(--mantine-scale, 1)) solid var(--mantine-color-default-border);
-}
-
-.homarr-data-table .mantine-datatable-footer {
-  border-top: calc(0.0625rem * var(--mantine-scale, 1)) solid var(--mantine-color-default-border);
+.homarr-data-table-no-scroll-shadows .mantine-datatable-header th {
+  border-bottom: none;
+  box-shadow: inset 0 -1px 0 var(--mantine-color-default-border);
 }
 
 .homarr-data-table th {
   padding: 0;
   white-space: nowrap;
-  background-color: var(--background-color) !important;
+  background:
+    linear-gradient(
+      var(--background-color, var(--mantine-color-body)),
+      var(--background-color, var(--mantine-color-body))
+    ),
+    var(--mantine-color-body) !important;
 }
 
 .homarr-data-table td {
