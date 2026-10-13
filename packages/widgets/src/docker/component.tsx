@@ -456,7 +456,7 @@ export default function DockerWidget({
         <Group
           justify="space-between"
           style={{
-            borderTop: "0.0625rem solid var(--border-color)",
+            borderTop: "calc(0.0625rem * var(--mantine-scale, 1)) solid var(--mantine-color-default-border)",
           }}
           py={2}
           px={8}

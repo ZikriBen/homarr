@@ -33,6 +33,20 @@
   }
 }
 
+/* The library fades these overlays from the scroll offset. On Mac that paints
+   dark bands into the rows. Static borders below do not follow the scroll. */
+.homarr-data-table .mantine-datatable-scroll-area-shadow {
+  display: none;
+}
+
+.homarr-data-table .mantine-datatable-header {
+  border-bottom: calc(0.0625rem * var(--mantine-scale, 1)) solid var(--mantine-color-default-border);
+}
+
+.homarr-data-table .mantine-datatable-footer {
+  border-top: calc(0.0625rem * var(--mantine-scale, 1)) solid var(--mantine-color-default-border);
+}
+
 .homarr-data-table th {
   padding: 0;
   white-space: nowrap;
